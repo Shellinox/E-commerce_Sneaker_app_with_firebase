@@ -1,8 +1,9 @@
-#Sneaker App with Firebase
+# Sneaker App with Firebase
 
 This is a mobile app built using Firebase as the backend to manage the user authentication and database storage. The app allows users to purchase their favorite sneakers from various brands..
 
-Features
+## Features:
+
 User authentication with Firebase Authentication
 Firebase Realtime Database to store user information and sneaker data
 Add sneakers to cart and purchase them
