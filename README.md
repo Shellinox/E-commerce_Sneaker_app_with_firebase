@@ -4,10 +4,10 @@ This is a mobile app built using Firebase as the backend to manage the user auth
 
 ## Features:
 
-User authentication with Firebase Authentication
-Firebase Realtime Database to store user information and sneaker data
-Add sneakers to cart and purchase them
-Place order with your sneakers
+User authentication with Firebase Authentication\n
+Firebase Realtime Database to store user information and sneaker data\n
+Add sneakers to cart and purchase them\n
+Place order with your sneakers\n
 
 ![login screen](https://user-images.githubusercontent.com/114509764/236383429-cdbf50d1-2d50-4df4-93c5-0893d762c7de.PNG)\n
 ![orderscreen](https://user-images.githubusercontent.com/114509764/236383432-75e4b75e-dfd9-4f17-ad93-8a723d5887e5.PNG)\n
