@@ -1,16 +1,14 @@
-# sneakerapp
+#Sneaker App with Firebase
 
-A new Flutter project.
+This is a mobile app built using Firebase as the backend to manage the user authentication and database storage. The app allows users to purchase their favorite sneakers from various brands..
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Features
+User authentication with Firebase Authentication
+Firebase Realtime Database to store user information and sneaker data
+Add sneakers to cart and purchase them
+Place order with your sneakers
+![login screen](https://user-images.githubusercontent.com/114509764/236383429-cdbf50d1-2d50-4df4-93c5-0893d762c7de.PNG)
+![orderscreen](https://user-images.githubusercontent.com/114509764/236383432-75e4b75e-dfd9-4f17-ad93-8a723d5887e5.PNG)
+![cartpage](https://user-images.githubusercontent.com/114509764/236383436-687d5829-e4c9-40b2-b29e-16f604278b51.PNG)
+![product screen](https://user-images.githubusercontent.com/114509764/236383437-10169163-5521-4625-9c32-7e7899839386.PNG)
+![homescreen](https://user-images.githubusercontent.com/114509764/236383438-c436666c-cec1-46fc-ae00-2ab0935abf6e.PNG)
