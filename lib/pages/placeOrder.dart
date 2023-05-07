@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sneakerapp/components/Toast_message.dart';
 import 'package:sneakerapp/components/cart_item.dart';
 import 'package:sneakerapp/components/textField.dart';
@@ -19,7 +20,14 @@ class _PlaceOrderState extends State<PlaceOrder> {
   TextEditingController _address = TextEditingController();
   TextEditingController _number = TextEditingController();
   TextEditingController _email = TextEditingController();
-  Cart shoes=new Cart();
+  List<Shoe> userOrders=[];
+  List<String> shoeList(){
+    List<String>? listShoe=[];
+    userOrders.forEach((element) {
+      listShoe.add(element.name);
+    });
+    return listShoe;
+  }
   Future createOrder() async {
     final Order =
     FirebaseFirestore.instance.collection('userOrders').doc(
@@ -31,7 +39,7 @@ class _PlaceOrderState extends State<PlaceOrder> {
       'Address': _address.text,
       'Phone': _number.text,
       'Email': _email.text,
-      'Orders':[shoes.getUserCart()],
+      'Orders':shoeList(),
     };
     await Order.set(json);
     }
@@ -53,61 +61,62 @@ class _PlaceOrderState extends State<PlaceOrder> {
     }
   @override
     Widget build(BuildContext context) {
-      return Scaffold(
-          resizeToAvoidBottomInset: false,
-          appBar: AppBar(
-              backgroundColor: Colors.red, title: const Text("Place Order")),
-          body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                tField("Name", _name),
-                const SizedBox(
-                  height: 25,
-                ),
-                tField("Address", _address),
-                const SizedBox(
-                  height: 25,
-                ),
-                tField("Phone Number", _number),
-                const SizedBox(
-                  height: 25,
-                ),
-                tField("Email", _email),
-                const SizedBox(
-                  height: 25,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    placeOrder();
-                  },
-                  child: Container(
-                    height: 50,
-                    width: 400,
-                    decoration: BoxDecoration(
-                        color: Colors.grey[900],
-                        borderRadius: BorderRadius.circular(5)),
-                    child: Center(
-                      child: loading
-                          ? const SizedBox(
-                        height: 20,
-                        width: 20,
-                        child: CircularProgressIndicator(
-                          color: Colors.white,
-                          strokeWidth: 2,
-                        ),
-                      )
-                          : const Text(
-                        "Place Order",
-                        style: (TextStyle(color: Colors.white)),
+   userOrders= context.read<Cart>().userCart;
+    return Scaffold(
+        resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+            backgroundColor: Colors.red, title: const Text("Place Order")),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              tField("Name", _name),
+              const SizedBox(
+                height: 25,
+              ),
+              tField("Address", _address),
+              const SizedBox(
+                height: 25,
+              ),
+              tField("Phone Number", _number),
+              const SizedBox(
+                height: 25,
+              ),
+              tField("Email", _email),
+              const SizedBox(
+                height: 25,
+              ),
+              GestureDetector(
+                onTap: () {
+                  placeOrder();
+                },
+                child: Container(
+                  height: 50,
+                  width: 400,
+                  decoration: BoxDecoration(
+                      color: Colors.grey[900],
+                      borderRadius: BorderRadius.circular(5)),
+                  child: Center(
+                    child: loading
+                        ? const SizedBox(
+                      height: 20,
+                      width: 20,
+                      child: CircularProgressIndicator(
+                        color: Colors.white,
+                        strokeWidth: 2,
                       ),
+                    )
+                        : const Text(
+                      "Place Order",
+                      style: (TextStyle(color: Colors.white)),
                     ),
                   ),
                 ),
-              ],
-            ),
-          )
-      );
+              ),
+            ],
+          ),
+        )
+    );
     }
   }
